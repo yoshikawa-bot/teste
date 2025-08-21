@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Daijin Cloud - Potencialize sua transformação digital com infraestrutura em nuvem confiável, escalável e segura. Inove com soluções de IA, computação e armazenamento.">
+  <meta name="keywords" content="Daijin Cloud, computação em nuvem, infraestrutura em nuvem, IA, armazenamento, escalabilidade, segurança, transformação digital">
+  <meta name="author" content="Daijin Cloud">
+  <title>Daijin Cloud - Acelere sua Transformação Digital</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- RESET & BASE --- */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; }
+    body { color: #dce9ff; background: #0a0f1c; line-height: 1.6; scroll-behavior: smooth; overflow-x: hidden; }
+
+    /* --- HEADER --- */
+    header { background: rgba(10, 20, 40, 0.95); backdrop-filter: blur(12px); position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); }
+    nav { max-width: 1200px; margin: 0 auto; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.6rem; font-weight: 700; color: #4da6ff; letter-spacing: -0.02em; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links li { margin-left: 2rem; }
+    .nav-links a { text-decoration: none; font-size: 1rem; font-weight: 600; color: #dce9ff; transition: color 0.3s ease, transform 0.2s ease; }
+    .nav-links a:hover { color: #4da6ff; transform: translateY(-2px); }
+    .burger { display: none; cursor: pointer; transition: transform 0.4s ease; }
+    .burger div { width: 28px; height: 3px; background: #dce9ff; margin: 6px; border-radius: 2px; transition: all 0.4s ease; }
+
+    /* --- HERO --- */
+    .hero { background: linear-gradient(135deg, #001433 0%, #003366 100%); text-align: center; padding: 8rem 5% 10rem; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(77, 166, 255, 0.2), transparent 70%); animation: pulse 10s infinite ease-in-out; }
+    @keyframes pulse { 0% { transform: scale(1); opacity: 0.2; } 50% { transform: scale(1.2); opacity: 0.4; } 100% { transform: scale(1); opacity: 0.2; } }
+    .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; color: #ffffff; position: relative; z-index: 1; }
+    .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; color: #cce0ff; position: relative; z-index: 1; }
+    .cta-button { display: inline-block; padding: 0.9rem 2rem; background: #4da6ff; color: #0a0f1c; border-radius: 8px; font-weight: 600; text-decoration: none; transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; margin: 0.5rem; font-size: 1rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); }
+    .cta-button:hover { background: #3385cc; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6); }
+
+    /* --- SECTIONS --- */
+    section { max-width: 1200px; margin: 0 auto; padding: 5rem 5%; }
+    h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 2.5rem; color: #4da6ff; text-align: center; }
+
+    /* --- GRIDS & CARDS --- */
+    .feature-grid, .pricing-grid, .footer-grid { display: grid; gap: 1.8rem; }
+    .feature-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .feature-card, .pricing-card { background: #111a2d; padding: 1.8rem; border-radius: 10px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); }
+    .feature-card:hover, .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); }
+    .feature-card h3, .pricing-card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: #dce9ff; }
+    .feature-card p, .pricing-card p { color: #a9c7e6; font-size: 0.95rem; }
+    .pricing-card .price { font-size: 1.8rem; font-weight: 700; color: #4da6ff; margin: 1.2rem 0; }
+
+    /* --- FOOTER --- */
+    footer { background: #0d1426; color: #a9c7e6; padding: 4rem 5% 2rem; margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+    .footer-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 3rem; }
+    .footer-grid h3 { font-size: 1.1rem; color: #ffffff; margin-bottom: 1rem; }
+    .footer-grid a { color: #4da6ff; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
+    .footer-grid a:hover { color: #ffffff; }
+    .footer-cta { text-align: center; padding: 2rem; background: #003366; border-radius: 8px; margin-bottom: 2rem; }
+    .footer-cta h3 { color: #ffffff; margin-bottom: 1rem; }
+    .footer-cta .cta-button { background: #4da6ff; color: #0a0f1c; }
+    .footer-bottom { text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 2rem; font-size: 0.9rem; }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; background: #111a2d; position: absolute; top: 70px; left: 0; width: 100%; padding: 2rem 0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); }
+      .nav-links.active { display: flex; }
+      .nav-links li { margin: 1rem 0; }
+      .burger { display: block; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1rem; }
+      .cta-button { padding: 0.8rem 1.6rem; font-size: 0.95rem; }
+    }
+
+    /* --- BURGER ANIMATION --- */
+    .burger.toggle .line1 { transform: rotate(-45deg) translate(-6px, 6px); }
+    .burger.toggle .line2 { opacity: 0; }
+    .burger.toggle .line3 { transform: rotate(45deg) translate(-6px, -6px); }
+
+    /* --- AOS --- */
+    [data-aos] { opacity: 0; transition-property: transform, opacity; }
+    [data-aos].aos-animate { opacity: 1; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Daijin Cloud</div>
+      <ul class="nav-links">
+        <li><a href="#home">Início</a></li>
+        <li><a href="#services">Serviços</a></li>
+        <li><a href="#pricing">Preços</a></li>
+        <li><a href="#solutions">Soluções</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
+      <div class="burger" role="button" aria-label="Menu de navegação">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero" data-aos="fade-up">
+    <h1>Acelere sua Inovação com Daijin Cloud</h1>
+    <p>Construa, escale e inove com a plataforma de nuvem confiável que oferece computação, armazenamento, IA e mais, com segurança e desempenho de nível global.</p>
+    <div>
+      <a href="#pricing" class="cta-button" data-aos="zoom-in">Comece Grátis</a>
+      <a href="#contact" class="cta-button" data-aos="zoom-in" data-aos-delay="100">Fale com um Especialista</a>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="services" data-aos="fade-up">
+    <h2>Nossos Serviços em Nuvem</h2>
+    <div class="feature-grid">
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+        <h3>Computação em Nuvem</h3>
+        <p>Execute aplicações com máquinas virtuais escaláveis e de alta performance.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+        <h3>Armazenamento Seguro</h3>
+        <p>Armazene dados com redundância global e segurança avançada.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+        <h3>Inteligência Artificial</h3>
+        <p>Desenvolva soluções de IA com APIs poderosas e modelos prontos.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+        <h3>Análises de Dados</h3>
+        <p>Obtenha insights em tempo real com big data e análises avançadas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREÇOS -->
+  <section id="pricing" data-aos="fade-up">
+    <h2>Preços Flexíveis</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+        <h3>Pague Conforme o Uso</h3>
+        <p class="price">R$ 0,01/h</p>
+        <p>Flexibilidade total com faturamento por uso, ideal para startups.</p>
+        <a href="#" class="cta-button">Explorar</a>
+      </div>
+      <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
+        <h3>Planos Gerenciados</h3>
+        <p class="price">R$ 49,90/mês</p>
+        <p>Soluções gerenciadas com suporte dedicado.</p>
+        <a href="#" class="cta-button">Contratar</a>
+      </div>
+      <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+        <h3>Enterprise</h3>
+        <p class="price">Sob Consulta</p>
+        <p>Planos sob medida para grandes organizações.</p>
+        <a href="#contact" class="cta-button">Fale Conosco</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUÇÕES -->
+  <section id="solutions" data-aos="fade-up">
+    <h2>Soluções para sua Indústria</h2>
+    <div class="feature-grid">
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+        <h3>Varejo</h3>
+        <p>Personalize experiências com IA e dados em tempo real.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+        <h3>Saúde</h3>
+        <p>Segurança e conformidade para dados sensíveis.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+        <h3>Financeiro</h3>
+        <p>Proteja transações com soluções seguras e escaláveis.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+        <h3>Manufatura</h3>
+        <p>Aumente a eficiência com IoT e análises preditivas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-cta" data-aos="fade-up">
+      <h3>Comece hoje sua jornada na nuvem</h3>
+      <a href="#pricing" class="cta-button">Experimente Grátis</a>
+    </div>
+    <div class="footer-grid">
+      <div>
+        <h3>Daijin Cloud</h3>
+        <ul>
+          <li><a href="#home">Sobre Nós</a></li>
+          <li><a href="#services">Serviços</a></li>
+          <li><a href="#pricing">Preços</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Recursos</h3>
+        <ul>
+          <li><a href="#">Documentação</a></li>
+          <li><a href="#">Tutoriais</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Suporte</h3>
+        <ul>
+          <li><a href="#">Central de Ajuda</a></li>
+          <li><a href="mailto:suporte@daijincloud.com">Contato</a></li>
+          <li><a href="#">Status do Serviço</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Serviço</a></li>
+          <li><a href="#">Conformidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Daijin Cloud. Todos os direitos reservados.</p>
+      <p>Contato: <a href="mailto:suporte@daijincloud.com">suporte@daijincloud.com</a></p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+    burger.addEventListener('click', () => { navLinks.classList.toggle('active'); burger.classList.toggle('toggle'); });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => { navLinks.classList.remove('active'); burger.classList.remove('toggle'); });
+    });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
