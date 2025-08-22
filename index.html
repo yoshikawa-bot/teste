@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="description" content="Daijin Cloud - Potencialize sua transformação digital com infraestrutura em nuvem confiável, escalável e segura. Inove com soluções de IA, computação e armazenamento.">
   <meta name="keywords" content="Daijin Cloud, computação em nuvem, infraestrutura em nuvem, IA, armazenamento, escalabilidade, segurança, transformação digital">
   <meta name="author" content="Daijin Cloud">
@@ -37,17 +37,24 @@
 
   <style>
     /* --- RESET & BASE --- */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-    html { font-size: 100%; } /* Added for consistent font scaling */
-    body { color: #dce9ff; background: #0a0f1c; line-height: 1.6; scroll-behavior: smooth; overflow-x: hidden; font-size: 1rem; } /* Added base font size */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      color: #dce9ff; 
+      background: #0a0f1c; 
+      line-height: 1.6; 
+      scroll-behavior: smooth; 
+      overflow-x: hidden; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px; /* Tamanho base garantido */
+      -webkit-text-size-adjust: 100%; /* Previne ajuste de texto no iOS */
+    }
 
     /* --- Gradient Text --- */
     .gradient-text {
       background: linear-gradient(90deg, #a78bfa, #60a5fa, #f9a8d4);
       -webkit-background-clip: text;
-      background-clip: text; /* Added for broader support */
       -webkit-text-fill-color: transparent;
-      color: #dce9ff; /* Added fallback for browsers without gradient support */
+      color: transparent;
       background-size: 200% 100%;
       animation: gradientMove 5s ease infinite;
     }
@@ -69,13 +76,12 @@
       text-decoration: none;
       transition: all 0.3s ease;
       margin: 0.5rem;
-      font-size: clamp(0.95rem, 2.5vw, 1rem); /* Adjusted minimum for readability */
+      font-size: 1rem;
       box-shadow: 0 4px 14px rgba(0,0,0,0.3);
       background-image: linear-gradient(90deg,#a78bfa,#60a5fa,#f9a8d4);
       -webkit-background-clip: text;
-      background-clip: text;
       -webkit-text-fill-color: transparent;
-      color: #dce9ff; /* Added fallback for browsers without gradient support */
+      color: transparent;
     }
     .cta-button:hover {
       transform: translateY(-3px);
@@ -224,7 +230,7 @@
       .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
       
       .nav-links a {
-        font-size: clamp(1.1rem, 3vw, 1.2rem); /* Increased for mobile readability */
+        font-size: 1.2rem;
         padding: 0.8rem 1rem;
         display: flex;
         align-items: center;
@@ -248,41 +254,200 @@
     }
 
     /* --- HERO --- */
-    .hero { background: linear-gradient(135deg, #001433 0%, #003366 100%); text-align: center; padding: 8rem 5% 10rem; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(77, 166, 255, 0.2), transparent 70%); animation: pulse 10s infinite ease-in-out; }
-    @keyframes pulse { 0% { transform: scale(1); opacity: 0.2; } 50% { transform: scale(1.2); opacity: 0.4; } 100% { transform: scale(1); opacity: 0.2; } }
-    .hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 1.5rem; position: relative; z-index: 1; }
-    .hero p { font-size: clamp(1.1rem, 2.5vw, 1.2rem); /* Increased minimum for readability */ max-width: 700px; margin: 0 auto 2rem; color: #cce0ff; position: relative; z-index: 1; }
+    .hero { 
+      background: linear-gradient(135deg, #001433 0%, #003366 100%); 
+      text-align: center; 
+      padding: 8rem 5% 10rem; 
+      min-height: 90vh; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      position: relative; 
+      overflow: hidden; 
+    }
+    .hero::before { 
+      content: ''; 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: radial-gradient(circle at 50% 50%, rgba(77, 166, 255, 0.2), transparent 70%); 
+      animation: pulse 10s infinite ease-in-out; 
+    }
+    @keyframes pulse { 
+      0% { transform: scale(1); opacity: 0.2; } 
+      50% { transform: scale(1.2); opacity: 0.4; } 
+      100% { transform: scale(1); opacity: 0.2; } 
+    }
+    .hero h1 { 
+      font-size: clamp(2.5rem, 5vw, 3.5rem); 
+      font-weight: 700; 
+      margin-bottom: 1.5rem; 
+      position: relative; 
+      z-index: 1; 
+      line-height: 1.2;
+    }
+    .hero p { 
+      font-size: clamp(1.1rem, 3vw, 1.3rem); 
+      max-width: 700px; 
+      margin: 0 auto 2rem; 
+      color: #cce0ff; 
+      position: relative; 
+      z-index: 1; 
+    }
 
     /* --- SECTIONS --- */
-    section { max-width: 1200px; margin: 0 auto; padding: 5rem 5%; }
-    h2 { font-size: clamp(1.8rem, 4vw, 2.2rem); font-weight: 700; margin-bottom: 2.5rem; text-align: center; }
+    section { 
+      max-width: 1200px; 
+      margin: 0 auto; 
+      padding: 5rem 5%; 
+    }
+    h2 { 
+      font-size: clamp(2rem, 5vw, 2.5rem); 
+      font-weight: 700; 
+      margin-bottom: 2.5rem; 
+      text-align: center; 
+      line-height: 1.2;
+    }
 
     /* --- GRIDS & CARDS --- */
-    .feature-grid, .pricing-grid, .footer-grid { display: grid; gap: 1.8rem; }
+    .feature-grid, .pricing-grid, .footer-grid { 
+      display: grid; 
+      gap: 1.8rem; 
+    }
     .feature-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
     .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    .feature-card, .pricing-card { background: #111a2d; padding: 1.8rem; border-radius: 10px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); }
-    .feature-card:hover, .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); }
-    .feature-card h3, .pricing-card h3 { font-size: clamp(1.2rem, 2.5vw, 1.3rem); margin-bottom: 0.8rem; }
-    .feature-card p, .pricing-card p { color: #a9c7e6; font-size: clamp(0.95rem, 2vw, 1rem); /* Increased minimum for readability */ }
-    .pricing-card .price { font-size: clamp(1.5rem, 3vw, 1.8rem); font-weight: 700; margin: 1.2rem 0; }
+    .feature-card, .pricing-card { 
+      background: #111a2d; 
+      padding: 1.8rem; 
+      border-radius: 10px; 
+      text-align: center; 
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); 
+    }
+    .feature-card:hover, .pricing-card:hover { 
+      transform: translateY(-6px); 
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); 
+    }
+    .feature-card h3, .pricing-card h3 { 
+      font-size: 1.3rem; 
+      margin-bottom: 0.8rem; 
+      line-height: 1.3;
+    }
+    .feature-card p, .pricing-card p { 
+      color: #a9c7e6; 
+      font-size: 1rem; 
+      line-height: 1.5;
+    }
+    .pricing-card .price { 
+      font-size: 1.8rem; 
+      font-weight: 700; 
+      margin: 1.2rem 0; 
+    }
 
     /* --- FOOTER --- */
-    footer { background: #0d1426; color: #a9c7e6; padding: 4rem 5% 2rem; margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
-    .footer-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 3rem; }
-    .footer-grid h3 { font-size: 1.1rem; margin-bottom: 1rem; }
-    .footer-grid a { color: #4da6ff; text-decoration: none; font-size: clamp(0.9rem, 1.8vw, 0.95rem); /* Adjusted for readability */ transition: color 0.3s ease; }
-    .footer-grid a:hover { color: #ffffff; }
-    .footer-cta { text-align: center; padding: 2rem; background: #003366; border-radius: 8px; margin-bottom: 2rem; }
-    .footer-cta h3 { margin-bottom: 1rem; }
-    .footer-bottom { text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 2rem; font-size: clamp(0.9rem, 1.8vw, 0.95rem); /* Adjusted for readability */ }
+    footer { 
+      background: #0d1426; 
+      color: #a9c7e6; 
+      padding: 4rem 5% 2rem; 
+      margin-top: 4rem; 
+      border-top: 1px solid rgba(255, 255, 255, 0.05); 
+    }
+    .footer-grid { 
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+      margin-bottom: 3rem; 
+    }
+    .footer-grid h3 { 
+      font-size: 1.2rem; 
+      margin-bottom: 1rem; 
+    }
+    .footer-grid a { 
+      color: #4da6ff; 
+      text-decoration: none; 
+      font-size: 1rem; 
+      transition: color 0.3s ease; 
+    }
+    .footer-grid a:hover { 
+      color: #ffffff; 
+    }
+    .footer-cta { 
+      text-align: center; 
+      padding: 2rem; 
+      background: #003366; 
+      border-radius: 8px; 
+      margin-bottom: 2rem; 
+    }
+    .footer-cta h3 { 
+      margin-bottom: 1rem; 
+      font-size: 1.4rem;
+    }
+    .footer-bottom { 
+      text-align: center; 
+      border-top: 1px solid rgba(255, 255, 255, 0.05); 
+      padding-top: 2rem; 
+      font-size: 1rem; 
+    }
 
     /* --- RESPONSIVE --- */
     @media (max-width: 768px) {
-      .hero h1 { font-size: clamp(2rem, 5vw, 2.5rem); } /* Adjusted for smaller screens */
-      .hero p { font-size: clamp(1rem, 2.5vw, 1.1rem); } /* Adjusted for readability */
-      .cta-button { padding: 0.8rem 1.6rem; font-size: clamp(0.9rem, 2.5vw, 0.95rem); } /* Adjusted for readability */
+      body {
+        font-size: 15px; /* Tamanho ligeiramente menor em mobile */
+      }
+      
+      .hero h1 { 
+        font-size: 2.2rem; 
+      }
+      .hero p { 
+        font-size: 1.1rem; 
+      }
+      .cta-button { 
+        padding: 0.8rem 1.6rem; 
+        font-size: 0.95rem; 
+        margin: 0.3rem;
+      }
+      
+      .feature-card, .pricing-card {
+        padding: 1.5rem;
+      }
+      
+      .feature-card h3, .pricing-card h3 {
+        font-size: 1.2rem;
+      }
+      
+      .feature-card p, .pricing-card p {
+        font-size: 0.95rem;
+      }
+      
+      .pricing-card .price {
+        font-size: 1.6rem;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      h2 {
+        font-size: 1.6rem;
+      }
+      
+      .cta-button {
+        display: block;
+        margin: 0.5rem auto;
+        width: 80%;
+        max-width: 250px;
+      }
     }
 
     /* --- AOS --- */
@@ -291,6 +456,7 @@
   </style>
 </head>
 <body>
+  <!-- O restante do HTML permanece igual -->
   <header>
     <nav>
       <div class="logo gradient-text">Daijin Cloud</div>
@@ -314,7 +480,7 @@
     <p>Construa, escale e inove com a plataforma de nuvem confiável que oferece computação, armazenamento, IA e mais, com segurança e desempenho de nível global.</p>
     <div>
       <a href="#pricing" class="cta-button" data-aos="zoom-in">Comece Grátis</a>
-      <a href="#contact" class="cta-button" data-aos="zoom-in" data-aos-delay="100">Fale com um Especialista</a>
+      <a href="#contact" class="cta-button" data-aos="zoom-in" data-aos-delay="100">Suporte</a>
     </div>
   </section>
 
