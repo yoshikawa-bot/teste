@@ -62,9 +62,7 @@
       color: transparent; /* Fallback para navegadores que não suportam -webkit-text-fill-color */
       background-size: 200% 100%;
       animation: gradientMove 5s ease infinite;
-      font-size: clamp(2.2rem, 5vw, 3rem); /* Garante tamanho consistente para gradient-text */
-      font-weight: 700; /* Mantém peso consistente */
-      line-height: 1.2; /* Melhora legibilidade */
+      text-rendering: optimizeLegibility; /* Melhora a renderização do texto */
     }
     
     @keyframes gradientMove {
@@ -312,14 +310,15 @@
       padding: 5rem 5%; 
     }
     h2 { 
-      font-size: clamp(2.2rem, 5vw, 3rem); /* Mantém tamanho consistente */
+      font-size: clamp(2.2rem, 5vw, 3rem); 
       font-weight: 700; 
       margin-bottom: 2.5rem; 
       text-align: center; 
       line-height: 1.2;
     }
     h2.gradient-text {
-      font-size: clamp(2.2rem, 5vw, 3rem); /* Garante que h2 com gradient-text tenha tamanho fixo */
+      text-rendering: optimizeLegibility; /* Melhora a renderização */
+      -webkit-font-smoothing: antialiased; /* Garante consistência em navegadores WebKit */
     }
 
     /* --- GRIDS & CARDS --- */
@@ -411,9 +410,6 @@
       .hero p { 
         font-size: clamp(1.1rem, 3vw, 1.3rem); 
       }
-      h2.gradient-text {
-        font-size: clamp(2rem, 4.5vw, 2.8rem); /* Mantém tamanho legível */
-      }
     }
 
     @media (max-width: 768px) {
@@ -433,10 +429,7 @@
       }
       
       h2 {
-        font-size: clamp(2rem, 4vw, 2.5rem);
-      }
-      h2.gradient-text {
-        font-size: clamp(2rem, 4vw, 2.5rem); /* Garante tamanho mínimo para h2 com gradient-text */
+        font-size: 2rem;
       }
       
       .cta-button { 
@@ -489,10 +482,7 @@
       }
       
       h2 {
-        font-size: clamp(1.8rem, 4vw, 2.2rem);
-      }
-      h2.gradient-text {
-        font-size: clamp(1.8rem, 4vw, 2.2rem); /* Garante tamanho legível em mobile */
+        font-size: 1.8rem;
       }
       
       .cta-button {
