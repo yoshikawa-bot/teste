@@ -13,6 +13,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -43,6 +46,14 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       color: transparent;
+      background-size: 200% 100%;
+      animation: gradientMove 5s ease infinite;
+    }
+    
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     /* --- CTA Button --- */
@@ -180,7 +191,7 @@
         transform: translateY(-100%);
         opacity: 0;
         pointer-events: none;
-        transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
+        transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
       }
       
       .nav-links.active {
@@ -190,10 +201,12 @@
       }
       
       .nav-links li {
-        margin: 1.5rem 0;
+        margin: 1rem 0;
         opacity: 0;
         transform: translateY(20px);
         transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        width: 100%;
+        text-align: center;
       }
       
       .nav-links.active li {
@@ -208,9 +221,26 @@
       .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
       
       .nav-links a {
-        font-size: 1.4rem;
-        padding: 0.5rem 1rem;
-        display: inline-block;
+        font-size: 1.2rem;
+        padding: 0.8rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        width: 100%;
+        transition: all 0.3s ease;
+      }
+      
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        transform: translateX(5px);
+      }
+      
+      .nav-icon {
+        font-size: 1.1rem;
+        width: 24px;
+        text-align: center;
       }
     }
 
@@ -218,12 +248,12 @@
     .hero { background: linear-gradient(135deg, #001433 0%, #003366 100%); text-align: center; padding: 8rem 5% 10rem; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(77, 166, 255, 0.2), transparent 70%); animation: pulse 10s infinite ease-in-out; }
     @keyframes pulse { 0% { transform: scale(1); opacity: 0.2; } 50% { transform: scale(1.2); opacity: 0.4; } 100% { transform: scale(1); opacity: 0.2; } }
-    .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; position: relative; z-index: 1; }
-    .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; color: #cce0ff; position: relative; z-index: 1; }
+    .hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.2rem); max-width: 700px; margin: 0 auto 2rem; color: #cce0ff; position: relative; z-index: 1; }
 
     /* --- SECTIONS --- */
     section { max-width: 1200px; margin: 0 auto; padding: 5rem 5%; }
-    h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 2.5rem; text-align: center; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.2rem); font-weight: 700; margin-bottom: 2.5rem; text-align: center; }
 
     /* --- GRIDS & CARDS --- */
     .feature-grid, .pricing-grid, .footer-grid { display: grid; gap: 1.8rem; }
@@ -231,9 +261,9 @@
     .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
     .feature-card, .pricing-card { background: #111a2d; padding: 1.8rem; border-radius: 10px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); }
     .feature-card:hover, .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); }
-    .feature-card h3, .pricing-card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; }
-    .feature-card p, .pricing-card p { color: #a9c7e6; font-size: 0.95rem; }
-    .pricing-card .price { font-size: 1.8rem; font-weight: 700; margin: 1.2rem 0; }
+    .feature-card h3, .pricing-card h3 { font-size: clamp(1.2rem, 2.5vw, 1.3rem); margin-bottom: 0.8rem; }
+    .feature-card p, .pricing-card p { color: #a9c7e6; font-size: clamp(0.9rem, 2vw, 0.95rem); }
+    .pricing-card .price { font-size: clamp(1.5rem, 3vw, 1.8rem); font-weight: 700; margin: 1.2rem 0; }
 
     /* --- FOOTER --- */
     footer { background: #0d1426; color: #a9c7e6; padding: 4rem 5% 2rem; margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
@@ -262,11 +292,11 @@
     <nav>
       <div class="logo gradient-text">Daijin Cloud</div>
       <ul class="nav-links">
-        <li><a href="#home">Início</a></li>
-        <li><a href="#services">Serviços</a></li>
-        <li><a href="#pricing">Preços</a></li>
-        <li><a href="#solutions">Soluções</a></li>
-        <li><a href="#contact">Contato</a></li>
+        <li><a href="#home"><span class="nav-icon"><i class="fas fa-home"></i></span>Início</a></li>
+        <li><a href="#services"><span class="nav-icon"><i class="fas fa-cloud"></i></span>Serviços</a></li>
+        <li><a href="#pricing"><span class="nav-icon"><i class="fas fa-tags"></i></span>Preços</a></li>
+        <li><a href="#solutions"><span class="nav-icon"><i class="fas fa-lightbulb"></i></span>Soluções</a></li>
+        <li><a href="#contact"><span class="nav-icon"><i class="fas fa-envelope"></i></span>Contato</a></li>
       </ul>
       <div class="cloud-toggle" role="button" aria-label="Menu de navegação">
         <div class="cloud-icon"></div>
@@ -426,4 +456,4 @@
     });
   </script>
 </body>
-</html>
+        </html>
