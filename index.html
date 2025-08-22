@@ -38,14 +38,16 @@
   <style>
     /* --- RESET & BASE --- */
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-    body { color: #dce9ff; background: #0a0f1c; line-height: 1.6; scroll-behavior: smooth; overflow-x: hidden; }
+    html { font-size: 100%; } /* Added for consistent font scaling */
+    body { color: #dce9ff; background: #0a0f1c; line-height: 1.6; scroll-behavior: smooth; overflow-x: hidden; font-size: 1rem; } /* Added base font size */
 
     /* --- Gradient Text --- */
     .gradient-text {
       background: linear-gradient(90deg, #a78bfa, #60a5fa, #f9a8d4);
       -webkit-background-clip: text;
+      background-clip: text; /* Added for broader support */
       -webkit-text-fill-color: transparent;
-      color: transparent;
+      color: #dce9ff; /* Added fallback for browsers without gradient support */
       background-size: 200% 100%;
       animation: gradientMove 5s ease infinite;
     }
@@ -67,12 +69,13 @@
       text-decoration: none;
       transition: all 0.3s ease;
       margin: 0.5rem;
-      font-size: 1rem;
+      font-size: clamp(0.95rem, 2.5vw, 1rem); /* Adjusted minimum for readability */
       box-shadow: 0 4px 14px rgba(0,0,0,0.3);
       background-image: linear-gradient(90deg,#a78bfa,#60a5fa,#f9a8d4);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
-      color: transparent;
+      color: #dce9ff; /* Added fallback for browsers without gradient support */
     }
     .cta-button:hover {
       transform: translateY(-3px);
@@ -221,7 +224,7 @@
       .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
       
       .nav-links a {
-        font-size: 1.2rem;
+        font-size: clamp(1.1rem, 3vw, 1.2rem); /* Increased for mobile readability */
         padding: 0.8rem 1rem;
         display: flex;
         align-items: center;
@@ -249,7 +252,7 @@
     .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(77, 166, 255, 0.2), transparent 70%); animation: pulse 10s infinite ease-in-out; }
     @keyframes pulse { 0% { transform: scale(1); opacity: 0.2; } 50% { transform: scale(1.2); opacity: 0.4; } 100% { transform: scale(1); opacity: 0.2; } }
     .hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 1.5rem; position: relative; z-index: 1; }
-    .hero p { font-size: clamp(1rem, 2.5vw, 1.2rem); max-width: 700px; margin: 0 auto 2rem; color: #cce0ff; position: relative; z-index: 1; }
+    .hero p { font-size: clamp(1.1rem, 2.5vw, 1.2rem); /* Increased minimum for readability */ max-width: 700px; margin: 0 auto 2rem; color: #cce0ff; position: relative; z-index: 1; }
 
     /* --- SECTIONS --- */
     section { max-width: 1200px; margin: 0 auto; padding: 5rem 5%; }
@@ -262,24 +265,24 @@
     .feature-card, .pricing-card { background: #111a2d; padding: 1.8rem; border-radius: 10px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); }
     .feature-card:hover, .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); }
     .feature-card h3, .pricing-card h3 { font-size: clamp(1.2rem, 2.5vw, 1.3rem); margin-bottom: 0.8rem; }
-    .feature-card p, .pricing-card p { color: #a9c7e6; font-size: clamp(0.9rem, 2vw, 0.95rem); }
+    .feature-card p, .pricing-card p { color: #a9c7e6; font-size: clamp(0.95rem, 2vw, 1rem); /* Increased minimum for readability */ }
     .pricing-card .price { font-size: clamp(1.5rem, 3vw, 1.8rem); font-weight: 700; margin: 1.2rem 0; }
 
     /* --- FOOTER --- */
     footer { background: #0d1426; color: #a9c7e6; padding: 4rem 5% 2rem; margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
     .footer-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 3rem; }
     .footer-grid h3 { font-size: 1.1rem; margin-bottom: 1rem; }
-    .footer-grid a { color: #4da6ff; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
+    .footer-grid a { color: #4da6ff; text-decoration: none; font-size: clamp(0.9rem, 1.8vw, 0.95rem); /* Adjusted for readability */ transition: color 0.3s ease; }
     .footer-grid a:hover { color: #ffffff; }
     .footer-cta { text-align: center; padding: 2rem; background: #003366; border-radius: 8px; margin-bottom: 2rem; }
     .footer-cta h3 { margin-bottom: 1rem; }
-    .footer-bottom { text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 2rem; font-size: 0.9rem; }
+    .footer-bottom { text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 2rem; font-size: clamp(0.9rem, 1.8vw, 0.95rem); /* Adjusted for readability */ }
 
     /* --- RESPONSIVE --- */
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.2rem; }
-      .hero p { font-size: 1rem; }
-      .cta-button { padding: 0.8rem 1.6rem; font-size: 0.95rem; }
+      .hero h1 { font-size: clamp(2rem, 5vw, 2.5rem); } /* Adjusted for smaller screens */
+      .hero p { font-size: clamp(1rem, 2.5vw, 1.1rem); } /* Adjusted for readability */
+      .cta-button { padding: 0.8rem 1.6rem; font-size: clamp(0.9rem, 2.5vw, 0.95rem); } /* Adjusted for readability */
     }
 
     /* --- AOS --- */
