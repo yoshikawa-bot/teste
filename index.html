@@ -59,9 +59,12 @@
       background: linear-gradient(90deg, #a78bfa, #60a5fa, #f9a8d4);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      color: transparent;
+      color: transparent; /* Fallback para navegadores que não suportam -webkit-text-fill-color */
       background-size: 200% 100%;
       animation: gradientMove 5s ease infinite;
+      font-size: clamp(2.2rem, 5vw, 3rem); /* Garante tamanho consistente para gradient-text */
+      font-weight: 700; /* Mantém peso consistente */
+      line-height: 1.2; /* Melhora legibilidade */
     }
     
     @keyframes gradientMove {
@@ -309,11 +312,14 @@
       padding: 5rem 5%; 
     }
     h2 { 
-      font-size: clamp(2.2rem, 5vw, 3rem); 
+      font-size: clamp(2.2rem, 5vw, 3rem); /* Mantém tamanho consistente */
       font-weight: 700; 
       margin-bottom: 2.5rem; 
       text-align: center; 
       line-height: 1.2;
+    }
+    h2.gradient-text {
+      font-size: clamp(2.2rem, 5vw, 3rem); /* Garante que h2 com gradient-text tenha tamanho fixo */
     }
 
     /* --- GRIDS & CARDS --- */
@@ -384,7 +390,6 @@
       margin-bottom: 2rem; 
     }
     .footer-cta h3 { 
-      margin-bottom: 1.5rem; 
       font-size: 1.6rem;
     }
     .footer-bottom { 
@@ -406,6 +411,9 @@
       .hero p { 
         font-size: clamp(1.1rem, 3vw, 1.3rem); 
       }
+      h2.gradient-text {
+        font-size: clamp(2rem, 4.5vw, 2.8rem); /* Mantém tamanho legível */
+      }
     }
 
     @media (max-width: 768px) {
@@ -425,7 +433,10 @@
       }
       
       h2 {
-        font-size: 2rem;
+        font-size: clamp(2rem, 4vw, 2.5rem);
+      }
+      h2.gradient-text {
+        font-size: clamp(2rem, 4vw, 2.5rem); /* Garante tamanho mínimo para h2 com gradient-text */
       }
       
       .cta-button { 
@@ -478,7 +489,10 @@
       }
       
       h2 {
-        font-size: 1.8rem;
+        font-size: clamp(1.8rem, 4vw, 2.2rem);
+      }
+      h2.gradient-text {
+        font-size: clamp(1.8rem, 4vw, 2.2rem); /* Garante tamanho legível em mobile */
       }
       
       .cta-button {
@@ -512,7 +526,7 @@
   </style>
 </head>
 <body>
-  <!-- O restante do HTML permanece igual -->
+  <!-- HEADER -->
   <header>
     <nav>
       <div class="logo gradient-text">Daijin Cloud</div>
@@ -681,4 +695,4 @@
     });
   </script>
 </body>
-                                                                                          </html>
+</html>
