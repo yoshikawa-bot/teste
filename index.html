@@ -30,7 +30,7 @@
       --chacked-color: hsl(216, 100%, 60%);
       --font-color: white;
       --chacked-font-color: var(--font-color);
-      --icon-size: 1.2em; /* Reduced size for header toggle */
+      --icon-size: 1.2em;
       --anim-time: 0.2s;
       --anim-scale: 0.1;
       --base-radius: 0.8em;
@@ -48,7 +48,6 @@
       }
     }
 
-    /* --- RESET & BASE --- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html {
       font-size: 100%;
@@ -69,13 +68,11 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* --- Apple-like Typography --- */
     h1, h2, h3, h4, h5, h6 {
       font-weight: 600;
       letter-spacing: -0.028em;
     }
 
-    /* --- Gradient Text --- */
     .gradient-text {
       background: linear-gradient(90deg, var(--daijin-primary), var(--daijin-secondary), var(--daijin-accent));
       -webkit-background-clip: text;
@@ -91,18 +88,17 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* --- Custom Button (Adapted from Uiverse.io by elijahgummer) --- */
     .cta-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      whitespace: nowrap;
+      white-space: nowrap;
       border-radius: 12px;
       font-size: 1rem;
       font-weight: 500;
       text-decoration: none;
       transition: transform 0.2s ease, scale 0.2s ease;
-      margin: 0.5rem;
+      margin: 0.5rem 0; /* Alterado de margin: 0.5rem; */
       cursor: pointer;
       background: linear-gradient(#fff, #fff), linear-gradient(#fff 50%, rgba(255, 255, 255, 0.6) 80%, rgba(0, 0, 0, 0)), linear-gradient(90deg, hsl(0, 100%, 63%), hsl(90, 100%, 63%), hsl(210, 100%, 63%), hsl(195, 100%, 63%), hsl(270, 100%, 63%));
       background-clip: padding-box, border-box, border-box;
@@ -145,16 +141,24 @@
       transform: scale(0.95);
     }
 
+    .cta-button svg {
+      margin-left: 0.5rem;
+      width: 16px;
+      height: 16px;
+      stroke: #fff;
+      fill: none;
+      vertical-align: middle;
+    }
+
     @media (prefers-color-scheme: dark) {
       .cta-button {
-        background: rgba(255, 255, 255, 0.05); /* branco bem sutil */
-backdrop-filter: blur(15px);
--webkit-backdrop-filter: blur(15px); /* suporte Safari */ 
-linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), linear-gradient(90deg, hsl(0, 100%, 63%), hsl(90, 100%, 63%), hsl(210, 100%, 63%), hsl(195, 100%, 63%), hsl(270, 100%, 63%));
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), linear-gradient(90deg, hsl(0, 100%, 63%), hsl(90, 100%, 63%), hsl(210, 100%, 63%), hsl(195, 100%, 63%), hsl(270, 100%, 63%));
       }
     }
 
-    /* --- HEADER --- */
     header {
       background: var(--system-material-thick);
       backdrop-filter: blur(20px);
@@ -193,14 +197,13 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       font-size: 0.8rem;
     }
 
-    /* --- Simple Plus Toggle --- */
     .menu-toggle {
       display: none;
       position: relative;
       cursor: pointer;
-      font-size: 1.8rem; /* Tamanho aumentado */
-      color: var(--init-label-color); /* Cor do texto do tema */
-      background: transparent; /* Fundo removido */
+      font-size: 1.8rem;
+      color: var(--init-label-color);
+      background: transparent;
       border-radius: var(--base-radius);
       padding: 0.3em;
       transition: all var(--anim-time);
@@ -220,7 +223,7 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
     }
 
     .menu-toggle input:checked + i.fa-plus::before {
-      content: '\f00d'; /* Font Awesome 'x' icon for close */
+      content: '\f00d';
     }
 
     @media (max-width: 768px) {
@@ -231,185 +234,191 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       }
     }
 
- /* --- HERO --- */
-.hero {
-  background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(88, 86, 214, 0.1), rgba(255, 45, 85, 0.1)), 
-              url('https://yoshikawa-bot.github.io/cache/images/9c33a5e5.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  text-align: left;
-  padding: 4rem 5% 6rem;
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
+    .hero {
+      background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(88, 86, 214, 0.1), rgba(255, 45, 85, 0.1)), 
+                  url('https://yoshikawa-bot.github.io/cache/images/9c33a5e5.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: left;
+      padding: 4rem 5% 6rem;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(0, 122, 255, 0.15), rgba(88, 86, 214, 0.15), rgba(255, 45, 85, 0.15));
-  opacity: 0.5;
-  z-index: 0;
-}
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 122, 255, 0.15), rgba(88, 86, 214, 0.15), rgba(255, 45, 85, 0.15));
+      opacity: 0.5;
+      z-index: 0;
+    }
 
-/* Retângulo fino com blur - By @kawalyansky */
-.hero-tag {
-  position: fixed; /* Alterado de absolute para fixed */
-  top: 5rem; /* Ajustado para ficar abaixo do cabeçalho */
-  right: 2rem;
-  padding: 0.5rem 1.2rem;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #ffffff;
-  z-index: 9999; /* Valor muito alto */
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
+    .hero-tag {
+      position: absolute;
+      bottom: calc(100% - 12rem);
+      right: 2rem;
+      padding: 0.5rem 1.2rem;
+      background: rgba(255, 255, 255, 0.150);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #ffffff;
+      z-index: 10;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
 
-.hero-tag:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
+    .hero-tag:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
 
-@media (prefers-color-scheme: dark) {
-  .hero-tag {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-}
+    @media (prefers-color-scheme: dark) {
+      .hero-tag {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    }
 
-@media (max-width: 768px) {
-  .hero-tag {
-    top: 4rem; /* Ajuste para mobile */
-    right: 1.5rem;
-    padding: 0.4rem 1rem;
-    font-size: 0.8rem;
-  }
-}
+    @media (max-width: 768px) {
+      .hero-tag {
+        bottom: calc(100% - 10rem);
+        right: 1.5rem;
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+      }
+    }
 
-@media (max-width: 480px) {
-  .hero-tag {
-    top: 3.5rem; /* Ajuste para mobile pequeno */
-    right: 1rem;
-    padding: 0.3rem 0.8rem;
-    font-size: 0.75rem;
-  }
-}
+    @media (max-width: 480px) {
+      .hero-tag {
+        bottom: calc(100% - 8rem);
+        right: 1rem;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.75rem;
+      }
+    }
 
-@media (prefers-color-scheme: dark) {
-  .hero {
-    background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(88, 86, 214, 0.1), rgba(255, 45, 85, 0.1)), 
-                url('https://yoshikawa-bot.github.io/cache/images/8a1d7604.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  
-  .hero-tag {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-}
+    @media (prefers-color-scheme: dark) {
+      .hero {
+        background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(88, 86, 214, 0.1), rgba(255, 45, 85, 0.1)), 
+                    url('https://yoshikawa-bot.github.io/cache/images/8a1d7604.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      
+      .hero-tag {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    }
 
-@media (max-width: 768px) {
-  .hero {
-    min-height: 100vh;
-    padding: 3rem 5% 5rem;
-  }
-  
-  .hero-tag {
-    top: 1.5rem;
-    right: 1.5rem;
-    padding: 0.4rem 1rem;
-    font-size: 0.8rem;
-  }
-}
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 100vh;
+        padding: 3rem 5% 5rem;
+      }
+      
+      .hero-tag {
+        bottom: calc(100% - 10rem);
+        right: 1.5rem;
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+      }
+    }
 
-@media (max-width: 480px) {
-  .hero-tag {
-    top: 1rem;
-    right: 1rem;
-    padding: 0.3rem 0.8rem;
-    font-size: 0.75rem;
-  }
-}
+    @media (max-width: 480px) {
+      .hero-tag {
+        bottom: calc(100% - 8rem);
+        right: 1rem;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.75rem;
+      }
+    }
 
-.hero::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  opacity: 0.4;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 122, 255, 0.05) 100%);
-}
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.4;
+      background: linear-gradient(180deg, transparent 0%, rgba(0, 122, 255, 0.05) 100%);
+    }
 
-.hero h1 {
-  font-size: clamp(3rem, 6vw, 4.2rem);
-  font-weight: 700;
-  margin-bottom: 2rem;
-  position: relative;
-  z-index: 1;
-  line-height: 1.15;
-  letter-spacing: -0.038em;
-}
-.hero p {
-  font-size: clamp(1.25rem, 3.2vw, 1.65rem);
-  max-width: 720px;
-  margin: 0 auto 2.8rem;
-  color: #f1f1f1; /* Cinza escuro */
-  position: relative;
-  z-index: 1;
-  font-weight: 450;
-  line-height: 1.55;
-}
+    .hero h1 {
+      font-size: clamp(3rem, 6vw, 4.2rem);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+      line-height: 1.15;
+      letter-spacing: -0.038em;
+    }
+    .hero p {
+      font-size: clamp(1.25rem, 3.2vw, 1.65rem);
+      max-width: 720px;
+      margin: 0 0 2.8rem;
+      color: #f1f1f1;
+      position: relative;
+      z-index: 1;
+      font-weight: 450;
+      line-height: 1.55;
+    }
 
-.scroll-down {
-  display: none;
-  position: absolute;
-  bottom: 4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-}
+    .hero .cta-button-container {
+      position: relative;
+      z-index: 1;
+      margin-left: 0;
+      display: flex;
+      justify-content: flex-start;
+      width: 100%; /* Adicionado para garantir que ocupe toda a largura */
+    }
 
-.scroll-down svg {
-  width: 24px;
-  height: 24px;
-  fill: #f1f1f1;
-  animation: bounce 2s infinite ease-in-out;
-}
+    .scroll-down {
+      display: none;
+      position: absolute;
+      bottom: 4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(10px); }
-  60% { transform: translateY(5px); }
-}
+    .scroll-down svg {
+      width: 24px;
+      height: 24px;
+      fill: #f1f1f1;
+      animation: bounce 2s infinite ease-in-out;
+    }
 
-@media (max-width: 768px) {
-  .scroll-down {
-    display: block;
-  }
-}
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(10px); }
+      60% { transform: translateY(5px); }
+    }
 
-    /* --- SECTIONS --- */
+    @media (max-width: 768px) {
+      .scroll-down {
+        display: block;
+      }
+    }
+
     section {
       max-width: 1200px;
       margin: 0 auto;
@@ -424,7 +433,6 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       letter-spacing: -0.028em;
     }
 
-    /* --- GRIDS & CARDS --- */
     .feature-grid, .pricing-grid, .footer-grid {
       display: grid;
       gap: 1.8rem;
@@ -532,7 +540,6 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       }
     }
 
-    /* --- FOOTER --- */
     footer {
       background: var(--system-grouped-background);
       color: var(--system-gray);
@@ -603,7 +610,6 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       color: var(--system-gray);
     }
 
-    /* --- RESPONSIVE --- */
     @media (max-width: 1024px) {
       html { font-size: 95%; }
       .hero h1 { font-size: clamp(2.2rem, 5vw, 3rem); }
@@ -616,10 +622,12 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       .hero p { font-size: 1.1rem; }
       h2 { font-size: 1.8rem; }
       .cta-button {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.95rem;
-        margin: 0.4rem;
-      }
+  padding: 0.8rem 1.5rem;
+  font-size: 0.95rem;
+  margin: 0.4rem 0; /* Alterado de margin: 0.4rem; */
+  display: inline-flex; /* Adicionado para substituir display: block */
+  width: auto; /* Adicionado para remover largura fixa */
+}
       .feature-card, .pricing-card {
         padding: 2rem 1.5rem;
         max-width: 400px;
@@ -639,25 +647,23 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       .hero p { font-size: 1rem; }
       h2 { font-size: 1.6rem; }
       .cta-button {
-        display: block;
-        margin: 0.6rem auto;
-        width: 85%;
-        max-width: 280px;
-        padding: 0.8rem 1.2rem;
-      }
+  display: inline-flex; /* Alterado de display: block */
+  margin: 0.6rem 0; /* Alterado de margin: 0.6rem auto */
+  width: auto; /* Adicionado para remover largura fixa */
+  max-width: none; /* Adicionado para remover limite de largura */
+  padding: 0.8rem 6.0rem;
+}
       .feature-card, .pricing-card { padding: 1.8rem 1.2rem; }
       .feature-card h3, .pricing-card h3 { font-size: 1.2rem; }
       .feature-card p, .pricing-card p { font-size: 0.95rem; }
       .pricing-card .price { font-size: 1.6rem; }
     }
 
-    /* --- AOS --- */
     [data-aos] { opacity: 0; transition-property: transform, opacity; }
     [data-aos].aos-animate { opacity: 1; }
   </style>
 </head>
 <body>
-  <!-- HEADER -->
   <header>
     <nav>
       <div class="logo">
@@ -670,13 +676,17 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       </label>
     </nav>
   </header>
-  <!-- HERO -->
   <section id="home" class="hero" data-aos="fade-up">
-    <div class="hero-tag">By @kawalyansky</div>
+    <div class="hero-tag">Parte dos sistemas Yoshikawa</div>
     <h1 class="gradient-text">Potencialize sua Transformação Digital</h1>
     <p>Infraestrutura em nuvem confiável, escalável e segura para impulsionar sua inovação com soluções de IA, computação e armazenamento.</p>
-    <div>
-      <a href="#pricing" class="cta-button" data-aos="zoom-in">Comece Grátis</a>
+    <div class="cta-button-container">
+      <a href="#pricing" class="cta-button" data-aos="zoom-in">
+        Comece Grátis
+        <svg viewBox="0 0 24 24">
+          <path d="M5 12h14m-7-7l7 7-7 7" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </div>
     <div class="scroll-down">
       <svg viewBox="0 0 24 24">
@@ -684,7 +694,6 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       </svg>
     </div>
   </section>
-  <!-- SERVIÇOS -->
   <section id="services" data-aos="fade-up">
     <h2 class="gradient-text">Serviços em Nuvem</h2>
     <div class="feature-grid">
@@ -710,7 +719,6 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       </div>
     </div>
   </section>
-  <!-- PREÇOS -->
   <section id="pricing" data-aos="fade-up">
     <h2 class="gradient-text">Planos e Preços</h2>
     <div class="pricing-grid">
@@ -754,7 +762,6 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       </div>
     </div>
   </section>
-  <!-- SOLUÇÕES -->
   <section id="solutions" data-aos="fade-up">
     <h2 class="gradient-text">Soluções por Indústria</h2>
     <div class="feature-grid">
@@ -780,7 +787,6 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       </div>
     </div>
   </section>
-  <!-- FOOTER -->
   <footer id="contact">
     <div class="footer-cta" data-aos="fade-up">
       <h3 class="gradient-text">Pronto para transformar seu negócio?</h3>
@@ -829,10 +835,8 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       <p>Contato: <a href="mailto:suporte@daijincloud.com">suporte@daijincloud.com</a></p>
     </div>
   </footer>
-  <!-- SCRIPTS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Inicializar animações
     AOS.init({
       duration: 800,
       easing: 'ease-in-out',
@@ -840,13 +844,11 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       offset: 100
     });
 
-    // Menu toggle
     const menuToggle = document.querySelector('.menu-toggle input');
     menuToggle.addEventListener('change', () => {
       document.querySelector('.menu-toggle').classList.toggle('active', menuToggle.checked);
     });
 
-    // Scroll suave para âncoras
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -860,7 +862,6 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
       });
     });
 
-    // Suporte para dark mode
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     function updateColorScheme() {
       document.documentElement.setAttribute('data-theme', prefersDarkScheme.matches ? 'dark' : 'light');
@@ -869,4 +870,4 @@ linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), li
     updateColorScheme();
   </script>
 </body>
-  </html>
+          </html>
