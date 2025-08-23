@@ -7,18 +7,14 @@
   <meta name="keywords" content="Daijin Cloud, computação em nuvem, infraestrutura em nuvem, IA, armazenamento, escalabilidade, segurança, transformação digital">
   <meta name="author" content="Daijin Cloud">
   <title>Daijin Cloud - Acelere sua Transformação Digital</title>
-
   <!-- Google Fonts (Inter) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <!-- Ícones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <!-- AOS (animações de scroll) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
   <style>
     :root {
       --init-background-color: #ffffff;
@@ -53,14 +49,14 @@
       font-size: 100%;
       background-color: var(--init-background-color);
     }
-    body { 
-      color: var(--init-label-color); 
+    body {
+      color: var(--init-label-color);
       background: var(--system-background);
-      line-height: 1.47059; 
+      line-height: 1.47059;
       font-weight: 400;
       letter-spacing: -0.022em;
-      scroll-behavior: smooth; 
-      overflow-x: hidden; 
+      scroll-behavior: smooth;
+      overflow-x: hidden;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
       font-size: 1rem;
       -webkit-text-size-adjust: 100%;
@@ -83,7 +79,7 @@
       background-size: 200% 100%;
       animation: gradientMove 5s ease infinite;
     }
-    
+
     @keyframes gradientMove {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -118,27 +114,27 @@
     }
 
     /* --- HEADER (iCloud style) --- */
-    header { 
-      background: var(--system-material-thick); 
+    header {
+      background: var(--system-material-thick);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      position: fixed; 
-      top: 0; 
-      width: 100%; 
-      z-index: 1000; 
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
       border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
     }
-    nav { 
-      max-width: 1200px; 
-      margin: 0 auto; 
-      padding: 1rem 5%; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.6rem 5%; /* Thinner header */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .logo { 
-      font-size: 1.4rem; 
-      font-weight: 600; 
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 600;
       letter-spacing: -0.022em;
       display: flex;
       align-items: center;
@@ -155,20 +151,106 @@
       color: white;
       font-size: 0.8rem;
     }
-    .nav-links { 
-      display: flex; 
-      list-style: none; 
+
+    /* --- Cloud Toggle Menu (iCloud style) --- */
+    .cloud-toggle {
+      display: none;
+      cursor: pointer;
+      width: 40px; /* Smaller size */
+      height: 40px; /* Smaller size */
+      position: relative;
+      z-index: 1001;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+
+    .cloud-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    .cloud-icon {
+      position: relative;
+      width: 24px; /* Smaller size */
+      height: 16px; /* Smaller size */
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+
+    .cloud-icon::before,
+    .cloud-icon::after {
+      content: '';
+      position: absolute;
+      background: linear-gradient(90deg, var(--daijin-primary), var(--daijin-secondary), var(--daijin-accent));
+      border-radius: 50%;
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+
+    .cloud-icon::before {
+      width: 16px; /* Smaller size */
+      height: 16px; /* Smaller size */
+      left: 0;
+      top: 0;
+    }
+
+    .cloud-icon::after {
+      width: 12px; /* Smaller size */
+      height: 12px; /* Smaller size */
+      right: 0;
+      top: 4px;
+    }
+
+    .cloud-base {
+      position: absolute;
+      bottom: 0;
+      left: 2px;
+      width: 20px; /* Smaller size */
+      height: 10px; /* Smaller size */
+      background: linear-gradient(90deg, var(--daijin-primary), var(--daijin-secondary), var(--daijin-accent));
+      border-radius: 0 0 8px 8px; /* Adjusted for smaller size */
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+
+    /* Estados ativos do toggle */
+    .cloud-toggle.active {
+      transform: rotate(180deg);
+    }
+
+    .cloud-toggle.active .cloud-icon::before {
+      transform: translate(-4px, -4px) scale(0.8); /* Adjusted for smaller size */
+      opacity: 0.7;
+    }
+
+    .cloud-toggle.active .cloud-icon::after {
+      transform: translate(4px, -4px) scale(0.8); /* Adjusted for smaller size */
+      opacity: 0.7;
+    }
+
+    .cloud-toggle.active .cloud-base {
+      transform: translateY(4px) scale(0.9); /* Adjusted for smaller size */
+      opacity: 0.8;
+    }
+
+    /* --- Navigation Links (Side Panel for Mobile) --- */
+    .nav-links {
+      display: flex;
+      list-style: none;
       gap: 2rem;
     }
-    .nav-links a { 
-      text-decoration: none; 
-      font-size: 0.95rem; 
-      font-weight: 500; 
-      color: var(--init-label-color); 
-      transition: color 0.2s ease; 
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--init-label-color);
+      transition: color 0.2s ease;
       position: relative;
       padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem; /* Spacing between icon and text */
     }
+
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -179,279 +261,246 @@
       background: var(--daijin-primary);
       transition: width 0.3s ease;
     }
-    .nav-links a:hover::after { 
-      width: 100%; 
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
-    
-    /* --- Cloud Toggle Menu (iCloud style) --- */
-    .cloud-toggle {
-      display: none;
-      cursor: pointer;
-      width: 50px;
-      height: 50px;
-      position: relative;
-      z-index: 1001;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    }
-    
-    .cloud-toggle:hover {
-      transform: scale(1.1);
-    }
-    
-    .cloud-icon {
-      position: relative;
-      width: 30px;
-      height: 20px;
-      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    }
-    
-    .cloud-icon::before,
-    .cloud-icon::after {
-      content: '';
-      position: absolute;
-      background: linear-gradient(90deg, var(--daijin-primary), var(--daijin-secondary), var(--daijin-accent));
-      border-radius: 50%;
-      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    }
-    
-    .cloud-icon::before {
+
+    .nav-icon {
+      font-size: 0.9rem; /* Smaller icon size for desktop */
       width: 20px;
-      height: 20px;
-      left: 0;
-      top: 0;
+      text-align: center;
     }
-    
-    .cloud-icon::after {
-      width: 16px;
-      height: 16px;
-      right: 0;
-      top: 4px;
-    }
-    
-    .cloud-base {
-      position: absolute;
-      bottom: 0;
-      left: 2px;
-      width: 26px;
-      height: 12px;
-      background: linear-gradient(90deg, var(--daijin-primary), var(--daijin-secondary), var(--daijin-accent));
-      border-radius: 0 0 10px 10px;
-      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    }
-    
-    /* Estados ativos do toggle */
-    .cloud-toggle.active {
-      transform: rotate(180deg);
-    }
-    
-    .cloud-toggle.active .cloud-icon::before {
-      transform: translate(-5px, -5px) scale(0.8);
-      opacity: 0.7;
-    }
-    
-    .cloud-toggle.active .cloud-icon::after {
-      transform: translate(5px, -5px) scale(0.8);
-      opacity: 0.7;
-    }
-    
-    .cloud-toggle.active .cloud-base {
-      transform: translateY(5px) scale(0.9);
-      opacity: 0.8;
-    }
-    
-    /* Menu mobile expandido */
-    .nav-links {
-      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
-    }
-    
+
     @media (max-width: 768px) {
       .cloud-toggle {
         display: flex;
       }
-      
+
       .nav-links {
         position: fixed;
         top: 0;
-        left: 0;
-        width: 100%;
+        right: 0;
+        width: 80%; /* Side panel width */
         height: 100vh;
         background: var(--system-material-thick);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transform: translateY(-100%);
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 5rem 2rem;
+        transform: translateX(100%); /* Hidden off-screen */
         opacity: 0;
         pointer-events: none;
-        transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
-        gap: 1.5rem;
+        transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s ease;
+        z-index: 1000;
       }
-      
+
       .nav-links.active {
-        transform: translateY(0);
+        transform: translateX(0); /* Slide in from right */
         opacity: 1;
         pointer-events: all;
       }
-      
+
       .nav-links li {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         width: 100%;
-        text-align: center;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        margin-bottom: 1rem;
       }
-      
+
       .nav-links.active li {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
       }
-      
+
       .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
       .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
       .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
       .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
       .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
-      
+
       .nav-links a {
         font-size: 1.2rem;
-        padding: 0.8rem 1.5rem;
+        padding: 0.8rem 1rem;
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 0.8rem;
+        gap: 1rem; /* Increased spacing for icons */
         width: 100%;
+        border-radius: 8px;
         transition: all 0.3s ease;
       }
-      
+
       .nav-links a:hover {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--daijin-primary);
         transform: translateX(5px);
       }
-      
+
       .nav-icon {
-        font-size: 1.1rem;
+        font-size: 1.2rem; /* Larger icons for mobile */
         width: 24px;
+        height: 24px;
         text-align: center;
+        color: var(--system-gray);
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover .nav-icon {
+        color: var(--daijin-primary);
       }
     }
 
     /* --- HERO (iCloud style) --- */
-    .hero { 
-      background: linear-gradient(135deg, var(--system-background) 0%, #F5F5F7 100%); 
-      text-align: center; 
-      padding: 8rem 5% 6rem; 
-      min-height: 80vh; 
-      display: flex; 
-      flex-direction: column; 
-      justify-content: center; 
-      position: relative; 
-      overflow: hidden; 
+    .hero {
+      background: linear-gradient(135deg, var(--system-background) 0%, #F5F5F7 100%);
+      text-align: center;
+      padding: 8rem 5% 6rem;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
     }
-    
+
     @media (prefers-color-scheme: dark) {
       .hero {
         background: linear-gradient(135deg, #000000 0%, #1C1C1E 100%);
       }
     }
-    
-    .hero::before { 
-      content: ''; 
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      height: 100%; 
-      background: radial-gradient(circle at 50% 50%, rgba(0, 122, 255, 0.1), transparent 70%); 
-      animation: pulse 10s infinite ease-in-out; 
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 100vh; /* Full screen height on mobile */
+        padding: 7rem 5% 5rem;
+      }
     }
-    @keyframes pulse { 
-      0% { transform: scale(1); opacity: 0.2; } 
-      50% { transform: scale(1.1); opacity: 0.3; } 
-      100% { transform: scale(1); opacity: 0.2; } 
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 122, 255, 0.1), transparent 70%);
+      animation: pulse 10s infinite ease-in-out;
     }
-    
-    .hero h1 { 
-      font-size: clamp(2.5rem, 5vw, 3.5rem); 
-      font-weight: 700; 
-      margin-bottom: 1.5rem; 
-      position: relative; 
-      z-index: 1; 
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.2; }
+      50% { transform: scale(1.1); opacity: 0.3; }
+      100% { transform: scale(1); opacity: 0.2; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
       line-height: 1.2;
       letter-spacing: -0.035em;
     }
-    .hero p { 
-      font-size: clamp(1.1rem, 3vw, 1.4rem); 
-      max-width: 700px; 
-      margin: 0 auto 2.5rem; 
-      color: var(--system-gray); 
-      position: relative; 
-      z-index: 1; 
+    .hero p {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      color: var(--system-gray);
+      position: relative;
+      z-index: 1;
       font-weight: 400;
       line-height: 1.5;
     }
 
-    /* --- SECTIONS (iCloud style) --- */
-    section { 
-      max-width: 1200px; 
-      margin: 0 auto; 
-      padding: 5rem 5%; 
+    /* --- Scroll Down Animation --- */
+    .scroll-down {
+      display: none;
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
     }
-    h2 { 
-      font-size: clamp(2rem, 5vw, 2.8rem); 
-      font-weight: 700; 
-      margin-bottom: 3rem; 
-      text-align: center; 
+
+    .scroll-down svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--system-gray);
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(10px); }
+      60% { transform: translateY(5px); }
+    }
+
+    @media (max-width: 768px) {
+      .scroll-down {
+        display: block;
+      }
+    }
+
+    /* --- SECTIONS (iCloud style) --- */
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 5%;
+    }
+    h2 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
       line-height: 1.2;
       letter-spacing: -0.028em;
     }
 
     /* --- GRIDS & CARDS (iCloud style) --- */
-    .feature-grid, .pricing-grid, .footer-grid { 
-      display: grid; 
-      gap: 1.8rem; 
+    .feature-grid, .pricing-grid, .footer-grid {
+      display: grid;
+      gap: 1.8rem;
     }
     .feature-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    .pricing-grid { 
+    .pricing-grid {
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       justify-content: center;
     }
-    
-    .feature-card, .pricing-card { 
+
+    .feature-card, .pricing-card {
       background: var(--system-grouped-background);
-      padding: 2.5rem 2rem; 
-      border-radius: 16px; 
-      text-align: center; 
-      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+      padding: 2.5rem 2rem; /* Original padding */
+      border-radius: 16px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       border: 0.5px solid rgba(0, 0, 0, 0.05);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    
+
     @media (prefers-color-scheme: dark) {
       .feature-card, .pricing-card {
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         border: 0.5px solid rgba(255, 255, 255, 0.05);
       }
     }
-    
-    .feature-card:hover, .pricing-card:hover { 
-      transform: translateY(-5px); 
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+
+    .feature-card:hover, .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
-    
+
     @media (prefers-color-scheme: dark) {
       .feature-card:hover, .pricing-card:hover {
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       }
     }
-    
+
     .feature-icon {
       width: 60px;
       height: 60px;
@@ -464,23 +513,23 @@
       color: white;
       font-size: 1.5rem;
     }
-    
-    .feature-card h3, .pricing-card h3 { 
-      font-size: 1.4rem; 
-      margin-bottom: 1rem; 
+
+    .feature-card h3, .pricing-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
       line-height: 1.3;
       font-weight: 600;
     }
-    .feature-card p, .pricing-card p { 
-      color: var(--system-gray); 
-      font-size: 1.05rem; 
+    .feature-card p, .pricing-card p {
+      color: var(--system-gray);
+      font-size: 1.05rem;
       line-height: 1.6;
       margin-bottom: 1.5rem;
     }
-    .pricing-card .price { 
-      font-size: 2.2rem; 
-      font-weight: 700; 
-      margin: 1.5rem 0; 
+    .pricing-card .price {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 1.5rem 0;
     }
     .pricing-features {
       list-style: none;
@@ -492,33 +541,48 @@
       padding: 0.5rem 0;
       color: var(--system-gray);
       border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
     }
     .pricing-features li:last-child {
       border-bottom: none;
     }
-    .pricing-features li::before {
-      content: "✓";
-      color: #34C759;
-      margin-right: 0.5rem;
-      font-weight: 600;
+    .pricing-features li svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 0.6rem;
+      fill: #34C759; /* Modern green checkmark */
+    }
+
+    @media (max-width: 768px) {
+      .pricing-features {
+        max-height: 160px; /* Limit height to ensure uniform card sizes */
+        overflow: hidden;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pricing-features {
+        max-height: 140px; /* Adjusted for smaller screens */
+      }
     }
 
     /* --- FOOTER (iCloud style) --- */
-    footer { 
+    footer {
       background: var(--system-grouped-background);
-      color: var(--system-gray); 
-      padding: 4rem 5% 2rem; 
-      margin-top: 4rem; 
+      color: var(--system-gray);
+      padding: 4rem 5% 2rem;
+      margin-top: 4rem;
       border-top: 0.5px solid rgba(0, 0, 0, 0.05);
     }
-    .footer-grid { 
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-      margin-bottom: 3rem; 
+    .footer-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      margin-bottom: 3rem;
       gap: 2.5rem;
     }
-    .footer-grid h3 { 
-      font-size: 1.2rem; 
-      margin-bottom: 1.2rem; 
+    .footer-grid h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
       font-weight: 600;
     }
     .footer-grid ul {
@@ -527,33 +591,50 @@
     .footer-grid li {
       margin-bottom: 0.8rem;
     }
-    .footer-grid a { 
-      color: var(--system-gray); 
-      text-decoration: none; 
-      font-size: 1rem; 
-      transition: color 0.2s ease; 
+    .footer-grid a {
+      color: var(--system-gray);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.2s ease;
     }
-    .footer-grid a:hover { 
-      color: var(--daijin-primary); 
+    .footer-grid a:hover {
+      color: var(--daijin-primary);
     }
-    .footer-cta { 
-      text-align: center; 
-      padding: 3rem; 
-      background: var(--system-grouped-background);
-      border-radius: 16px; 
-      margin-bottom: 3rem; 
+    .footer-cta {
+      text-align: center;
+      padding: 3rem;
+      background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(88, 86, 214, 0.1), rgba(255, 45, 85, 0.1));
+      border-radius: 16px;
+      margin-bottom: 3rem;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       border: 0.5px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
     }
-    .footer-cta h3 { 
+    .footer-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 122, 255, 0.15), rgba(88, 86, 214, 0.15), rgba(255, 45, 85, 0.15));
+      opacity: 0.5;
+      z-index: 0;
+    }
+    .footer-cta h3, .footer-cta a {
+      position: relative;
+      z-index: 1;
+    }
+    .footer-cta h3 {
       font-size: 1.6rem;
       margin-bottom: 1.5rem;
     }
-    .footer-bottom { 
-      text-align: center; 
-      border-top: 0.5px solid rgba(0, 0, 0, 0.05); 
-      padding-top: 2rem; 
-      font-size: 0.9rem; 
+    .footer-bottom {
+      text-align: center;
+      border-top: 0.5px solid rgba(0, 0, 0, 0.05);
+      padding-top: 2rem;
+      font-size: 0.9rem;
       color: var(--system-gray);
     }
 
@@ -562,12 +643,12 @@
       html {
         font-size: 95%;
       }
-      
-      .hero h1 { 
-        font-size: clamp(2.2rem, 5vw, 3rem); 
+
+      .hero h1 {
+        font-size: clamp(2.2rem, 5vw, 3rem);
       }
-      .hero p { 
-        font-size: clamp(1rem, 3vw, 1.2rem); 
+      .hero p {
+        font-size: clamp(1rem, 3vw, 1.2rem);
       }
     }
 
@@ -575,56 +656,51 @@
       html {
         font-size: 92%;
       }
-      
-      .hero {
-        padding: 7rem 5% 5rem;
-        min-height: 70vh;
+
+      .hero h1 {
+        font-size: 2.2rem;
       }
-      
-      .hero h1 { 
-        font-size: 2.2rem; 
+      .hero p {
+        font-size: 1.1rem;
       }
-      .hero p { 
-        font-size: 1.1rem; 
-      }
-      
+
       h2 {
         font-size: 1.8rem;
       }
-      
-      .cta-button { 
-        padding: 0.8rem 1.5rem; 
-        font-size: 0.95rem; 
+
+      .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
         margin: 0.4rem;
       }
-      
+
       .feature-card, .pricing-card {
         padding: 2rem 1.5rem;
         max-width: 400px;
         margin: 0 auto;
       }
-      
+
       .feature-card h3, .pricing-card h3 {
         font-size: 1.3rem;
       }
-      
+
       .feature-card p, .pricing-card p {
         font-size: 1rem;
       }
-      
+
       .pricing-card .price {
         font-size: 1.8rem;
       }
-      
+
       .footer-grid {
         grid-template-columns: 1fr;
         gap: 2.2rem;
       }
-      
+
       .footer-cta {
         padding: 2rem;
       }
-      
+
       .footer-cta h3 {
         font-size: 1.4rem;
       }
@@ -634,19 +710,19 @@
       html {
         font-size: 90%;
       }
-      
+
       .hero h1 {
         font-size: 1.9rem;
       }
-      
+
       .hero p {
         font-size: 1rem;
       }
-      
+
       h2 {
         font-size: 1.6rem;
       }
-      
+
       .cta-button {
         display: block;
         margin: 0.6rem auto;
@@ -654,19 +730,19 @@
         max-width: 280px;
         padding: 0.8rem 1.2rem;
       }
-      
+
       .feature-card, .pricing-card {
         padding: 1.8rem 1.2rem;
       }
-      
+
       .feature-card h3, .pricing-card h3 {
         font-size: 1.2rem;
       }
-      
+
       .feature-card p, .pricing-card p {
         font-size: 0.95rem;
       }
-      
+
       .pricing-card .price {
         font-size: 1.6rem;
       }
@@ -698,7 +774,6 @@
       </div>
     </nav>
   </header>
-
   <!-- HERO -->
   <section id="home" class="hero" data-aos="fade-up">
     <h1 class="gradient-text">Potencialize sua Transformação Digital</h1>
@@ -707,8 +782,12 @@
       <a href="#pricing" class="cta-button" data-aos="zoom-in">Comece Grátis</a>
       <a href="#contact" class="cta-button secondary" data-aos="zoom-in" data-aos-delay="100">Saiba Mais</a>
     </div>
+    <div class="scroll-down">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 16.5l-6-6a.996.996 0 0 1 1.41-1.41L12 13.67l4.59-4.58a.996.996 0 1 1 1.41 1.41l-6 6z"/>
+      </svg>
+    </div>
   </section>
-
   <!-- SERVIÇOS -->
   <section id="services" data-aos="fade-up">
     <h2 class="gradient-text">Serviços em Nuvem</h2>
@@ -735,7 +814,6 @@
       </div>
     </div>
   </section>
-
   <!-- PREÇOS -->
   <section id="pricing" data-aos="fade-up">
     <h2 class="gradient-text">Planos e Preços</h2>
@@ -745,10 +823,10 @@
         <div class="price gradient-text">R$ 49,90<span>/mês</span></div>
         <p>Ideal para pequenos projetos e startups</p>
         <ul class="pricing-features">
-          <li>1 vCPU e 2GB RAM</li>
-          <li>40GB SSD Storage</li>
-          <li>1TB Transferência</li>
-          <li>Suporte por email</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5a.984.984 0 0 0-1.4 0 .984.984 0 0 0 0 1.4l4.2 4.2c.39.39 1.01.39 1.4 0l9.9-9.9a.984.984 0 0 0 0-1.4.984.984 0 0 0-1.4 0L9 16.2z"/></svg>1 vCPU e 2GB RAM</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5a.984.984 0 0 0-1.4 0 .984.984 0 0 0 0 1.4l4.2 4.2c.39.39 1.01.39 1.4 0l9.9-9.9a.984.984 0 0 0 0-1.4.984.984 0 0 0-1.4 0L9 16.2z"/></svg>40GB SSD Storage</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5a.984.984 0 0 0-1.4 0 .984.984 0 0 0 0 1.4l4.2 4.2c.39.39 1.01.39 1.4 0l9.9-9.9a.984.984 0 0 0 0-1.4.984.984 0 0 0-1.4 0L9 16.2z"/></svg>1TB Transferência</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5a.984.984 0 0 0-1.4 0 .984.984 0 0 0 0 1.4l4.2 4.2c.39.39 1.01.39 1.4 0l9.9-9.9a.984.984 0 0 0 0-1.4.984.984 0 0 0-1.4 0L9 16.2z"/></svg>Suporte por email</li>
         </ul>
         <a href="#" class="cta-button">Começar Agora</a>
       </div>
@@ -757,11 +835,11 @@
         <div class="price gradient-text">R$ 99,90<span>/mês</span></div>
         <p>Perfeito para negócios em crescimento</p>
         <ul class="pricing-features">
-          <li>2 vCPUs e 4GB RAM</li>
-          <li>80GB SSD Storage</li>
-          <li>2TB Transferência</li>
-          <li>Suporte prioritário</li>
-          <li>Backups diários</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5a.984.984 0 0 0-1.4 0 .984.984 0 0 0 0 1.4l4.2 4.2c.39.39 1.01.39 1.4 0l9.9-9.9a.984.984 0 0 0 0-1.4.984.984 0 0 0-1.4 0L9 16.2z"/></svg>2 vCPUs e 4GB RAM</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5a.984.984 0 0 0-1.4 0 .984.984 0 0 0 0 1.4l4.2 4.2c.39.39 1.01.39 1.4 0l9.9-9.9a.984.984 0 0 0 0-1.4.984.984 0 0 0-1.4 0L9 16.2z"/></svg>80GB SSD Storage</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5a.984.984 0 0 0-1.4 0 .984.984 0 0 0 0 1.4l4.2 4.2c.39.39 1.01.39 1.4 0l9.9-9.9a.984.984 0 0 0 0-1.4.984.984 0 0 0-1.4 0L9 16.2z"/></svg>2TB Transferência</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5a.984.984 0 0 0-1.4 0 .984.984 0 0 0 0 1.4l4.2 4.2c.39.39 1.01.39 1.4 0l9.9-9.9a.984.984 0 0 0 0-1.4.984.984 0 0 0-1.4 0L9 16.2z"/></svg>Suporte prioritário</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5a.984.984 0 0 0-1.4 0 .984.984 0 0 0 0 1.4l4.2 4.2c.39.39 1.01.39 1.4 0l9.9-9.9a.984.984 0 0 0 0-1.4.984.984 0 0 0-1.4 0L9 16.2z"/></svg>Backups diários</li>
         </ul>
         <a href="#" class="cta-button">Escolher Plano</a>
       </div>
@@ -770,17 +848,16 @@
         <div class="price gradient-text">Sob Consulta</div>
         <p>Soluções personalizadas para grandes empresas</p>
         <ul class="pricing-features">
-          <li>Recursos dedicados</li>
-          <li>Armazenamento escalável</li>
-          <li>SLAs personalizados</li>
-          <li>Suporte 24/7</li>
-          <li>Consultoria especializada</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5a.984.984 0 0 0-1.4 0 .984.984 0 0 0 0 1.4l4.2 4.2c.39.39 1.01.39 1.4 0l9.9-9.9a.984.984 0 0 0 0-1.4.984.984 0 0 0-1.4 0L9 16.2z"/></svg>Recursos dedicados</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5a.984.984 0 0 0-1.4 0 .984.984 0 0 0 0 1.4l4.2 4.2c.39.39 1.01.39 1.4 0l9.9-9.9a.984.984 0 0 0 0-1.4.984.984 0 0 0-1.4 0L9 16.2z"/></svg>Armazenamento escalável</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5a.984.984 0 0 0-1.4 0 .984.984 0 0 0 0 1.4l4.2 4.2c.39.39 1.01.39 1.4 0l9.9-9.9a.984.984 0 0 0 0-1.4.984.984 0 0 0-1.4 0L9 16.2z"/></svg>SLAs personalizados</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5a.984.984 0 0 0-1.4 0 .984.984 0 0 0 0 1.4l4.2 4.2c.39.39 1.01.39 1.4 0l9.9-9.9a.984.984 0 0 0 0-1.4.984.984 0 0 0-1.4 0L9 16.2z"/></svg>Suporte 24/7</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5a.984.984 0 0 0-1.4 0 .984.984 0 0 0 0 1.4l4.2 4.2c.39.39 1.01.39 1.4 0l9.9-9.9a.984.984 0 0 0 0-1.4.984.984 0 0 0-1.4 0L9 16.2z"/></svg>Consultoria especializada</li>
         </ul>
         <a href="#contact" class="cta-button secondary">Fale Conosco</a>
       </div>
     </div>
   </section>
-
   <!-- SOLUÇÕES -->
   <section id="solutions" data-aos="fade-up">
     <h2 class="gradient-text">Soluções por Indústria</h2>
@@ -807,7 +884,6 @@
       </div>
     </div>
   </section>
-
   <!-- FOOTER -->
   <footer id="contact">
     <div class="footer-cta" data-aos="fade-up">
@@ -857,49 +933,48 @@
       <p>Contato: <a href="mailto:suporte@daijincloud.com">suporte@daijincloud.com</a></p>
     </div>
   </footer>
-
   <!-- SCRIPTS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     // Inicializar animações
-    AOS.init({ 
-      duration: 800, 
-      easing: 'ease-in-out', 
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
       once: true,
-      offset: 100 
+      offset: 100
     });
-    
+
     // Menu mobile toggle
     const cloudToggle = document.querySelector('.cloud-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
-    cloudToggle.addEventListener('click', () => { 
-      navLinks.classList.toggle('active'); 
-      cloudToggle.classList.toggle('active'); 
+
+    cloudToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      cloudToggle.classList.toggle('active');
     });
-    
+
     // Fechar menu ao clicar em um link
     document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => { 
-        navLinks.classList.remove('active'); 
-        cloudToggle.classList.remove('active'); 
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        cloudToggle.classList.remove('active');
       });
     });
-    
+
     // Scroll suave para âncoras
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          target.scrollIntoView({ 
+          target.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
           });
         }
       });
     });
-    
+
     // Suporte para dark mode
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     function updateColorScheme() {
@@ -909,4 +984,4 @@
     updateColorScheme();
   </script>
 </body>
-                </html>
+                                                                                                                                                                                                     </html>
