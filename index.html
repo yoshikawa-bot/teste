@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-build-number="2530Hotfix10" data-mastering-number="2530Hotfix10">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -8,7 +8,7 @@
   <meta name="author" content="Daijin Cloud">
   <title>Daijin Cloud - Acelere sua Transformação Digital</title>
 
-  <!-- Google Fonts (SF Pro Display similar) -->
+  <!-- Google Fonts (Inter) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -30,6 +30,9 @@
       --system-material-thin: rgba(255, 255, 255, 0.7);
       --system-material-regular: rgba(255, 255, 255, 0.8);
       --system-material-thick: rgba(255, 255, 255, 0.9);
+      --daijin-primary: #007AFF;
+      --daijin-secondary: #5856D6;
+      --daijin-accent: #FF2D55;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -73,7 +76,7 @@
 
     /* --- Gradient Text (iCloud style) --- */
     .gradient-text {
-      background: linear-gradient(90deg, #007AFF, #5856D6, #FF2D55);
+      background: linear-gradient(90deg, var(--daijin-primary), var(--daijin-secondary), var(--daijin-accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       color: transparent;
@@ -91,7 +94,7 @@
     .cta-button {
       display: inline-block;
       padding: 0.8rem 1.8rem;
-      background: var(--system-blue);
+      background: var(--daijin-primary);
       color: white;
       border: none;
       border-radius: 12px;
@@ -144,7 +147,7 @@
     .logo-icon {
       width: 24px;
       height: 24px;
-      background: linear-gradient(135deg, #007AFF, #5856D6);
+      background: linear-gradient(135deg, var(--daijin-primary), var(--daijin-secondary));
       border-radius: 6px;
       display: flex;
       align-items: center;
@@ -173,7 +176,7 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: var(--system-blue);
+      background: var(--daijin-primary);
       transition: width 0.3s ease;
     }
     .nav-links a:hover::after { 
@@ -184,36 +187,86 @@
     .cloud-toggle {
       display: none;
       cursor: pointer;
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       position: relative;
       z-index: 1001;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     }
     
-    .cloud-line {
+    .cloud-toggle:hover {
+      transform: scale(1.1);
+    }
+    
+    .cloud-icon {
+      position: relative;
+      width: 30px;
+      height: 20px;
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+    
+    .cloud-icon::before,
+    .cloud-icon::after {
+      content: '';
+      position: absolute;
+      background: linear-gradient(90deg, var(--daijin-primary), var(--daijin-secondary), var(--daijin-accent));
+      border-radius: 50%;
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+    
+    .cloud-icon::before {
       width: 20px;
-      height: 2px;
-      background: var(--init-label-color);
-      margin: 2px 0;
-      transition: all 0.3s ease;
+      height: 20px;
+      left: 0;
+      top: 0;
     }
     
-    .cloud-toggle.active .cloud-line:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
+    .cloud-icon::after {
+      width: 16px;
+      height: 16px;
+      right: 0;
+      top: 4px;
     }
     
-    .cloud-toggle.active .cloud-line:nth-child(2) {
-      opacity: 0;
+    .cloud-base {
+      position: absolute;
+      bottom: 0;
+      left: 2px;
+      width: 26px;
+      height: 12px;
+      background: linear-gradient(90deg, var(--daijin-primary), var(--daijin-secondary), var(--daijin-accent));
+      border-radius: 0 0 10px 10px;
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     }
     
-    .cloud-toggle.active .cloud-line:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -6px);
+    /* Estados ativos do toggle */
+    .cloud-toggle.active {
+      transform: rotate(180deg);
+    }
+    
+    .cloud-toggle.active .cloud-icon::before {
+      transform: translate(-5px, -5px) scale(0.8);
+      opacity: 0.7;
+    }
+    
+    .cloud-toggle.active .cloud-icon::after {
+      transform: translate(5px, -5px) scale(0.8);
+      opacity: 0.7;
+    }
+    
+    .cloud-toggle.active .cloud-base {
+      transform: translateY(5px) scale(0.9);
+      opacity: 0.8;
     }
     
     /* Menu mobile expandido */
+    .nav-links {
+      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
+    }
+    
     @media (max-width: 768px) {
       .cloud-toggle {
         display: flex;
@@ -234,7 +287,7 @@
         transform: translateY(-100%);
         opacity: 0;
         pointer-events: none;
-        transition: transform 0.4s ease, opacity 0.4s ease;
+        transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
         gap: 1.5rem;
       }
       
@@ -247,7 +300,9 @@
       .nav-links li {
         opacity: 0;
         transform: translateY(20px);
-        transition: all 0.4s ease;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        width: 100%;
+        text-align: center;
       }
       
       .nav-links.active li {
@@ -264,6 +319,24 @@
       .nav-links a {
         font-size: 1.2rem;
         padding: 0.8rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        width: 100%;
+        transition: all 0.3s ease;
+      }
+      
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        transform: translateX(5px);
+      }
+      
+      .nav-icon {
+        font-size: 1.1rem;
+        width: 24px;
+        text-align: center;
       }
     }
 
@@ -343,7 +416,10 @@
       gap: 1.8rem; 
     }
     .feature-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .pricing-grid { 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      justify-content: center;
+    }
     
     .feature-card, .pricing-card { 
       background: var(--system-grouped-background);
@@ -353,6 +429,9 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease; 
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       border: 0.5px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     
     @media (prefers-color-scheme: dark) {
@@ -377,7 +456,7 @@
       width: 60px;
       height: 60px;
       margin: 0 auto 1.5rem;
-      background: linear-gradient(135deg, #007AFF, #5856D6);
+      background: linear-gradient(135deg, var(--daijin-primary), var(--daijin-secondary));
       border-radius: 16px;
       display: flex;
       align-items: center;
@@ -407,6 +486,7 @@
       list-style: none;
       text-align: left;
       margin: 1.5rem 0;
+      flex-grow: 1;
     }
     .pricing-features li {
       padding: 0.5rem 0;
@@ -416,23 +496,12 @@
     .pricing-features li:last-child {
       border-bottom: none;
     }
-    .pricing-features li {
-  position: relative;
-  padding-left: 1.5rem; /* espaço pro ícone */
-  list-style: none; /* remove o marcador padrão */
-}
-
-.pricing-features li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.8rem;
-  width: 1rem;
-  height: 1rem;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%2334C759' viewBox='0 0 24 24'><path d='M20.285 6.709a1 1 0 0 0-1.41-1.418l-9.192 9.202-4.243-4.243a1 1 0 0 0-1.414 1.415l5 5a1 1 0 0 0 1.414 0l10-9.956z'/></svg>");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+    .pricing-features li::before {
+      content: "✓";
+      color: #34C759;
+      margin-right: 0.5rem;
+      font-weight: 600;
+    }
 
     /* --- FOOTER (iCloud style) --- */
     footer { 
@@ -465,7 +534,7 @@
       transition: color 0.2s ease; 
     }
     .footer-grid a:hover { 
-      color: var(--system-blue); 
+      color: var(--daijin-primary); 
     }
     .footer-cta { 
       text-align: center; 
@@ -531,6 +600,8 @@
       
       .feature-card, .pricing-card {
         padding: 2rem 1.5rem;
+        max-width: 400px;
+        margin: 0 auto;
       }
       
       .feature-card h3, .pricing-card h3 {
@@ -615,16 +686,15 @@
         Daijin Cloud
       </div>
       <ul class="nav-links">
-        <li><a href="#home">Início</a></li>
-        <li><a href="#services">Serviços</a></li>
-        <li><a href="#pricing">Preços</a></li>
-        <li><a href="#solutions">Soluções</a></li>
-        <li><a href="#contact">Contato</a></li>
+        <li><a href="#home"><span class="nav-icon"><i class="fas fa-home"></i></span>Início</a></li>
+        <li><a href="#services"><span class="nav-icon"><i class="fas fa-cloud"></i></span>Serviços</a></li>
+        <li><a href="#pricing"><span class="nav-icon"><i class="fas fa-tags"></i></span>Preços</a></li>
+        <li><a href="#solutions"><span class="nav-icon"><i class="fas fa-lightbulb"></i></span>Soluções</a></li>
+        <li><a href="#contact"><span class="nav-icon"><i class="fas fa-envelope"></i></span>Contato</a></li>
       </ul>
       <div class="cloud-toggle" role="button" aria-label="Menu de navegação">
-        <div class="cloud-line"></div>
-        <div class="cloud-line"></div>
-        <div class="cloud-line"></div>
+        <div class="cloud-icon"></div>
+        <div class="cloud-base"></div>
       </div>
     </nav>
   </header>
@@ -839,4 +909,4 @@
     updateColorScheme();
   </script>
 </body>
-</html>
+                </html>
